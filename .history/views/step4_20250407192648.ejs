@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Biometrics and Appointment</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/step4.css">
+</head>
+<body>
+  <div class="container mt-5">
+    <h2 class="mb-4">Step 4: Biometrics and Capturing Appointment</h2>
+    <p>Please review your application details:</p>
+    <% if (user) { %>
+      <ul class="list-group mb-4">
+        <li class="list-group-item"><strong>ID Number:</strong> <%= user.idNumber %></li>
+        <li class="list-group-item"><strong>Full Name:</strong> <%= user.fullName %></li>
+        <li class="list-group-item"><strong>Email:</strong> <%= user.email %></li>
+        <!-- Add other details as needed -->
+      </ul>
+    <% } else { %>
+      <p class="text-danger">No application found.</p>
+    <% } %>
+    <p>Your appointment date and location will be sent to your email or WhatsApp. Please check your inbox for further details on what to bring for your biometrics appointment.</p>
+    <div class="mt-4">
+      <a href="/visa" class="btn btn-primary mr-2">Visa Application</a>
+      <a href="/" class="btn btn-secondary">Back to Homepage</a>
+    </div>
+  </div>
+</body>
+</html>

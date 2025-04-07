@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Biometrics and Appointment</title>
+  <link rel="stylesheet" href="/css/step4.css">
+</head>
+<body>
+  <h2>Step 4: Biometrics and Capturing Appointment</h2>
+  <p>Please review your application details:</p>
+  <!-- Display user info summary -->
+  <% if (user) { %>
+    <ul>
+      <li>ID Number: <%= user.idNumber %></li>
+      <li>Full Name: <%= user.fullName %></li>
+      <li>Email: <%= user.email %></li>
+      <!-- Add additional fields as needed -->
+    </ul>
+  <% } else { %>
+    <p>No application found.</p>
+  <% } %>
+  <p>Your appointment date and location will be sent to your email or WhatsApp, so please keep checking your inbox. Details on what to bring for your biometrics appointment will be emailed to you.</p>
+  <a href="/visa"><button>Visa Application</button></a>
+  <a href="/"><button>Back to Homepage</button></a>
+</body>
+</html>
